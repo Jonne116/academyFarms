@@ -1,6 +1,7 @@
 package dev.academy.academyFarms.farm;
 
 import javax.persistence.*;
+import java.time.Instant;
 
 @Entity
 @Table
@@ -9,19 +10,21 @@ public class Farm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String farm;
-    private String dataType;
-    private Double dataValue;
+    private String location;
+    private Instant dateTime;
+    private String sensorType;
+    private Float value;
 
     public Farm() {
     }
 
-    public Farm(String farm, String dataType, Double dataValue) {
-        this.farm = farm;
-        this.dataType = dataType;
-        this.dataValue = dataValue;
+    public Farm(String location, Instant dateTime, String sensorType, Float value) {
+        this.location = location;
+        this.dateTime = dateTime;
+        this.sensorType = sensorType;
+        this.value = value;
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -30,37 +33,41 @@ public class Farm {
         this.id = id;
     }
 
-    public String getFarm() {
-        return farm;
+    public String getLocation() {
+        return location;
     }
 
-    public void setFarm(String farm) {
-        this.farm = farm;
+    public void setLocation(String location) {
+        this.location = location;
+    }
+    
+    public Instant getDateTime() { return dateTime; }
+
+    public void setDateTime(Instant dateTime) { this.dateTime = dateTime; }
+
+    public String getSensorType() {
+        return sensorType;
     }
 
-    public String getDataType() {
-        return dataType;
+    public void setSensorType(String sensorType) {
+        this.sensorType = sensorType;
     }
 
-    public void setDataType(String dataType) {
-        this.dataType = dataType;
+    public Float getValue() {
+        return value;
     }
 
-    public Double getDataValue() {
-        return dataValue;
-    }
-
-    public void setDataValue(Double dataValue) {
-        this.dataValue = dataValue;
+    public void setValue(Float value) {
+        this.value = value;
     }
 
     @Override
     public String toString() {
         return "farm{" +
                 "id=" + id +
-                ", farm='" + farm + '\'' +
-                ", dataType='" + dataType + '\'' +
-                ", dataValue=" + dataValue +
+                ", farm='" + location + '\'' +
+                ", dataType='" + sensorType + '\'' +
+                ", dataValue=" + value +
                 '}';
     }
 }

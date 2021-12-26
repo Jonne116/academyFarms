@@ -1,6 +1,8 @@
 package dev.academy.academyFarms.farm;
 
-import org.springframework.boot.CommandLineRunner;
+import dev.academy.academyFarms.CSVInit;
+
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -8,10 +10,9 @@ import org.springframework.context.annotation.Configuration;
 public class FarmConfig {
 
     @Bean
-    CommandLineRunner commandLineRunner(FarmRepository repository) {
-        return args -> {
-
-        };
+    ApplicationRunner runner(FarmRepository farmRepository) {
+        return (arg) -> farmRepository.saveAll(CSVInit.CSVHelper());
     }
-
 }
+
+
