@@ -18,8 +18,10 @@ import java.util.List;
 public class CSVInit {
 
      public static @NotNull List<Farm> CSVHelper() throws IOException, NumberFormatException {
+
         String[] files = new File("./sourceFiles").list();
         List<Farm> farmList = new ArrayList<>();
+
         assert files != null;
         for (String file : files) {
             BufferedReader reader = Files.newBufferedReader(Paths.get("./sourceFiles/" + file));
@@ -29,8 +31,8 @@ public class CSVInit {
                     .withIgnoreHeaderCase().withSkipHeaderRecord().withIgnoreEmptyLines().withTrim());
 
             for (CSVRecord csvRecord : csvParser) {
-                try {
 
+                try {
                     Farm farm = new Farm(
                             csvRecord.get("location"),
                             Instant.parse(csvRecord.get("dateTime")),
@@ -56,7 +58,6 @@ public class CSVInit {
                             break;
                         default:
                             throw new Exception();
-
                     }
                 }
                 catch (Exception e) {

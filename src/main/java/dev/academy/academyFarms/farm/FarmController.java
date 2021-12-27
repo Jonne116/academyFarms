@@ -7,21 +7,26 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
-@RequestMapping(path = "api/")
+@RequestMapping(path = "api/farm")
 public class FarmController {
 
     private final FarmService farmService;
 
     @Autowired
     public FarmController(FarmService farmService) {
+
         this.farmService = farmService;
+
     }
 
-    @GetMapping(path = "farm")
-    public List<Farm> getFarms() {
-        return farmService.getFarms();
+    @GetMapping
+    public List<Farm> getFarms(@RequestParam Map<String,String> params) {
+
+        return farmService.getFarms(params);
+
     }
 
 }
