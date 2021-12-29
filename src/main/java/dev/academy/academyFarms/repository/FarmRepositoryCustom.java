@@ -1,4 +1,6 @@
-package dev.academy.academyFarms.farm;
+package dev.academy.academyFarms.repository;
+
+import dev.academy.academyFarms.model.Farm;
 
 import java.util.List;
 import java.util.Map;

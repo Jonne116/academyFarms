@@ -1,6 +1,6 @@
-package dev.academy.academyFarms;
+package dev.academy.academyFarms.utility;
 
-import dev.academy.academyFarms.farm.Farm;
+import dev.academy.academyFarms.model.Farm;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -45,15 +45,24 @@ public class CSVInit {
                             if (farm.getValue() >= 0 && farm.getValue() <= 14) {
                                 farmList.add(farm);
                             }
+                            else {
+                                throw new Exception();
+                            }
                             break;
                         case "temperature":
                             if (farm.getValue() >= -50 && farm.getValue() <= 100) {
                                 farmList.add(farm);
                             }
+                            else {
+                                throw new Exception();
+                            }
                             break;
                         case "rainfall":
                             if (farm.getValue() >= 0 && farm.getValue() <= 500) {
                                 farmList.add(farm);
+                            }
+                            else {
+                                throw new Exception();
                             }
                             break;
                         default:
@@ -61,7 +70,7 @@ public class CSVInit {
                     }
                 }
                 catch (Exception e) {
-                    System.out.println("ERROR in File: " + file + " Line: " + (csvRecord.getRecordNumber() + 1));
+                    System.out.println("ATTENTION! File: " + file + " line: " + (csvRecord.getRecordNumber() + 1) + " invalid values discarded");
                 }
             }
         }

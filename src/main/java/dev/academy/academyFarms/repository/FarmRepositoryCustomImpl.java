@@ -1,5 +1,6 @@
-package dev.academy.academyFarms.farm;
+package dev.academy.academyFarms.repository;
 
+import dev.academy.academyFarms.model.Farm;
 import org.jetbrains.annotations.NotNull;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

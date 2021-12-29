@@ -1,4 +1,6 @@
-package dev.academy.academyFarms.farm;
+package dev.academy.academyFarms.model;
+
+import org.jetbrains.annotations.NotNull;
 
 import javax.persistence.*;
 import java.time.Instant;
