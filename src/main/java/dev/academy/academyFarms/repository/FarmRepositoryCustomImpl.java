@@ -2,11 +2,14 @@ package dev.academy.academyFarms.repository;
 
 import dev.academy.academyFarms.model.Farm;
 import org.jetbrains.annotations.NotNull;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.*;
 import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
@@ -32,7 +35,8 @@ public class FarmRepositoryCustomImpl implements FarmRepositoryCustom {
                 predicates.add(cb.lessThanOrEqualTo(farmRoot.get("dateTime"), Instant.parse(entry.getValue())));
             }
             else {
-                predicates.add(cb.equal(farmRoot.get(entry.getKey()), entry.getValue()));
+                List<String> mylist = new ArrayList<>(Arrays.asList(entry.getValue().split(",")));
+                predicates.add(cb.or(farmRoot.get(entry.getKey()).in(mylist)));
             }
         }
         query.select(farmRoot)
