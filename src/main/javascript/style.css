@@ -2,4 +2,162 @@
 
 * {
   font-family: 'Roboto', Arial, sans-serif;
+  margin: 0.1rem;
+  background-color: transparent;
+  color: black;
+}
+
+html {
+  display: flex;
+  justify-content: center;
+  background-color: rgb(228, 228, 228);
+  margin: 0;
+  font-size: 16px;
+}
+
+.appWrap {
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 2rem;
+}
+
+.dataText {
+  z-index: 2;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+
+#filterWrap {
+  display: flex;
+  justify-content: left;  
+  flex-flow:row wrap;
+}
+
+.dateTimeWrap {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+table {
+  margin-top: 5rem;
+  border-collapse: collapse;
+}
+
+td {
+  padding: 0.5rem;
+  border-bottom: 1px solid black;
+}
+
+th {
+  border-bottom: 1px solid black;
+}
+.plant {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.wheat {
+  display: inline-block;
+}
+
+.beanPair {
+  display: flex;
+  flex-direction: row;
+  padding: 0;
+  
+}
+
+.beanleft {
+  height: 3rem;
+  width: 2rem;
+  background-color: rgb(219, 178, 124);
+  border-radius: 0% 50% 0% 50% ;
+  rotate: 9deg;
+  box-shadow: 3px 3px 3px 3px rgb(206, 149, 75);
+  animation: moveBeans 2s infinite alternate;
+}
+
+.beanRight {
+  height: 3rem;
+  width: 2rem;
+  background-color: rgb(219, 178, 124);
+  border-radius: 50% 0% 50% 0%;
+  rotate: 9deg;
+  box-shadow: -3px 3px 3px 3px rgb(216, 154, 73);
+  animation: moveBeans 2s infinite alternate;
+}
+
+.stem {
+  position: absolute;
+  margin-left: 2rem;
+  background-color: rgb(180, 161, 99);
+  width: 0.4rem;
+  height: 100rem;
+ 
+}
+
+.leaf {
+  position: absolute;
+  margin-left: -20rem;
+  border-radius: 0% 100% 0% 0%;
+  border-right: solid rgb(221, 194, 104) 4rem;
+  width: 20rem;
+  height: 30rem;
+  animation: bouncyLeaf 3s alternate ease-in-out infinite;
+}
+
+#bean1 {
+  animation: moveBeanPairs 1s 100ms infinite alternate;
+}
+
+#bean2 {
+  animation: moveBeanPairs 1s 150ms infinite alternate;
+}
+#bean3 {
+  
+  animation: moveBeanPairs 1s 100ms infinite alternate;
+}
+#bean4 {
+  animation: moveBeanPairs 1s 300ms infinite ease-in-out alternate;
+}
+#bean5 {
+  animation-delay: 125ms;
+  animation: moveBeanPairs 1s 200ms infinite ease-in-out alternate;
+}
+
+@keyframes moveBeanPairs {
+0% {
+  margin-left: 0rem;
+} 
+100% {
+  margin-left: 0.3rem;
+} 
+}
+
+@keyframes moveBeans {
+  0%{
+
+  }
+  
+  100% {
+    rotate: 1deg;
+  }
+}
+
+@keyframes bouncyLeaf {
+  0% {
+    border-radius: 0% 100% 0% 0%;
+  }
+  100% {
+    border-radius: 0% 90% 0% 0%;
+  }
 }

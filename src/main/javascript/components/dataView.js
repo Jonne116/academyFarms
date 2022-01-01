@@ -20,7 +20,7 @@ const DataView = ({farmData}) => {
             return (
               <tr key={element.id}>
                 <td>{element.location}</td>
-                <td>{element.dateTime}</td>
+                <td>{new Date(element.dateTime).toLocaleString()}</td>
                 <td>{element.sensorType}</td>
                 <td>{element.value}</td>
               </tr>
@@ -29,7 +29,6 @@ const DataView = ({farmData}) => {
         </tbody>
       </table>
     </div>
-
   );
 };
 

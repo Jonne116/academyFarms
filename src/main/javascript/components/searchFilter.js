@@ -1,12 +1,10 @@
 import React from 'react';
-import DateTimePicker from 'react-datetime-picker';
+import DateTimeRangePicker from '@wojtekmaj/react-datetimerange-picker';
 import PropTypes from 'prop-types';
 
 const SearchFilter = ({
-  dateMax, 
-  dateMin, 
-  setDateMax, 
-  setDateMin, 
+  dateObj, 
+  setDateObj, 
   locationsSensors,
   setSensorType,
   setLocation
@@ -47,41 +45,40 @@ const SearchFilter = ({
   });
  
   return(
-    <div>
-      <div>
-        <h4>Locations</h4>
-        {locations}
-        <h4>Sensors</h4>
-        {sensors}
+    <>
+      <h2> Filter: </h2>
+      <div id='filterWrap'>
+    
+        <div>
+          <h4>Locations</h4>
+          {locations}
+        </div>
+        <div>
+          <h4>Sensors</h4>
+          {sensors}
+        </div>
+        <div className='dateTimeWrap'>
+          <div>
+            <h4>Date range</h4>
+            <DateTimeRangePicker
+              onChange={setDateObj}
+              value={dateObj}
+              disableClock={true}
+              maxDetail="minute"
+              clearIcon={null}
+              calendarIcon={null}
+            />
+          </div>
+        </div>
       </div>
-      <h4>Start date</h4>
-      <DateTimePicker
-        onChange={setDateMin}
-        value={dateMin}
-        disableClock={true}
-        maxDetail="hour"
-        clearIcon={null}
-        className="datePick"
-      />
-      <h4>End date</h4>
-      <DateTimePicker
-        onChange={setDateMax}
-        value={dateMax}
-        disableClock={true}
-        maxDetail="second"
-        clearIcon={null}
-        className="datePick"
-      />
-    </div>
+    </>
   );
 };
 
 SearchFilter.propTypes = {
   locationsSensors: PropTypes.object.isRequired,
-  dateMax: PropTypes.string.isRequired,
-  dateMin: PropTypes.string.isRequired,
-  setDateMax: PropTypes.func.isRequired,
-  setDateMin: PropTypes.func.isRequired,
+  dateObj: PropTypes.object,
+  setDateObj: PropTypes.func.isRequired,
   setLocation: PropTypes.func.isRequired,
   setSensorType: PropTypes.func.isRequired
 };
