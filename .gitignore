@@ -6,6 +6,7 @@ target/
 **/.m2/
 .env
 **/src/main/javascript/node_modules/
+**/src/main/javascript/build/
 
 
 ### STS ###

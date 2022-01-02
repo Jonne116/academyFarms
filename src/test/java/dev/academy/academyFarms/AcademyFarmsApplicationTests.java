@@ -7,8 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AcademyFarmsApplicationTests {
 
 	@Test
-	Boolean contextLoads() {
-		return true;
+	void contextLoads() {
 	}
 
 }
