@@ -2,61 +2,54 @@ package dev.academy.academyFarms.controller;
 
 import dev.academy.academyFarms.model.Farm;
 import dev.academy.academyFarms.service.FarmService;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Matchers;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
-import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.time.Instant;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-import static org.junit.jupiter.api.Assertions.*;
-@WebMvcTest(controllers = FarmController.class)
+import static org.hamcrest.Matchers.equalTo;
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+
+@WebMvcTest
 class FarmControllerTest {
-
-    @MockBean
-    private FarmService farmService;
 
     @Autowired
     private MockMvc mockMvc;
 
+    @MockBean
+    private FarmService farmService;
+
     @Test
-    @DisplayName("GET /api/farm?location=Friman Metsola collective should return list of farms")
-    void getFarms() throws Exception {
+    void shouldGetTypes() throws Exception {
+        Map<String, String> parameters = new HashMap<>();
+        parameters.put("location", "New York");
+        Farm farm = new Farm("New York", Instant.now(), "humidy", 1.11F);
+        Farm farm2 = new Farm("New York", Instant.now(), "humidy", 1.22F);
+        List<Farm> farmList = new ArrayList<>();
+        farmList.add(farm);
+        farmList.add(farm2);
 
-        Farm farm = new Farm(
-                "Friman Metsola collective",
-                Instant.parse("2018-12-31T22:00:00.000Z"),
-                "pH",
-                6.52F
-        );
+        when(farmService.getFarms(parameters))
+                .thenReturn(farmList);
 
-        Farm farm1 = new Farm(
-                "Friman Metsola collective",
-                Instant.parse("2018-12-31T22:00:00.000Z"),
-                "rainFall",
-                2.6F
-        );
+        mockMvc.perform(get("/api/farm"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().json("[{location:New York},{}]"));
+    }
 
-        Map<String, String> parameter = new HashMap<>();
-        parameter.put("location", "Friman Metsola collective");
-
-
-        Mockito.when(farmService.getFarms(parameter)).thenReturn(Arrays.asList(farm, farm1));
-
-        mockMvc.perform(MockMvcRequestBuilders.get("/api/farm?location=Friman Metsola collective"))
-                .andExpect(MockMvcResultMatchers.status().is(200))
-                .andExpect(MockMvcResultMatchers.content().contentType(MediaType.APPLICATION_JSON_VALUE))
-                .andExpect(MockMvcResultMatchers.jsonPath("$.size()").value(2))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].location").value("Friman Metsola collective"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].sensorType").value("pH"))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].value").value(6.52));
+    @Test
+    void getFarms() {
     }
 }

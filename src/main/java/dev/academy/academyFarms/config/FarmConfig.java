@@ -12,7 +12,7 @@ public class FarmConfig {
     @Bean
     ApplicationRunner runner(FarmRepository farmRepository) {
 
-        return (arg) -> farmRepository.saveAll(CSVInit.CSVHelper("./sourceFiles"));
+        return (arg) -> farmRepository.saveAll(CSVInit.CSVHelper());
 
     }
 }

@@ -35,8 +35,8 @@ public class FarmRepositoryCustomImpl implements FarmRepositoryCustom {
                 predicates.add(cb.lessThanOrEqualTo(farmRoot.get("dateTime"), Instant.parse(entry.getValue())));
             }
             else {
-                List<String> myList = new ArrayList<>(Arrays.asList(entry.getValue().split(",")));
-                predicates.add(cb.or(farmRoot.get(entry.getKey()).in(myList)));
+                List<String> mylist = new ArrayList<>(Arrays.asList(entry.getValue().split(",")));
+                predicates.add(cb.or(farmRoot.get(entry.getKey()).in(mylist)));
             }
         }
         query.select(farmRoot)

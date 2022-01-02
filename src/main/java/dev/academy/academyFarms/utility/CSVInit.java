@@ -17,14 +17,14 @@ import java.util.List;
 
 public class CSVInit {
 
-     public static @NotNull List<Farm> CSVHelper(String filePath) throws IOException, NumberFormatException {
+     public static @NotNull List<Farm> CSVHelper() throws IOException, NumberFormatException {
 
-        String[] files = new File(filePath).list();
+        String[] files = new File("./sourceFiles").list();
         List<Farm> farmList = new ArrayList<>();
 
         assert files != null;
         for (String file : files) {
-            BufferedReader reader = Files.newBufferedReader(Paths.get(filePath + "/" + file));
+            BufferedReader reader = Files.newBufferedReader(Paths.get("./sourceFiles/" + file));
 
             CSVParser csvParser = new CSVParser(reader, CSVFormat.DEFAULT
                     .withHeader("location", "dateTime", "sensorType", "value")

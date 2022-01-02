@@ -3,6 +3,7 @@ package dev.academy.academyFarms.service;
 import dev.academy.academyFarms.model.Farm;
 import dev.academy.academyFarms.repository.FarmRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -29,7 +30,7 @@ public class FarmService {
         return farmRepository.findAll();
     }
 
-    public Map<String, List<String>> getLocationsSensors() {
+    public Map<String, List<String>> getLocations() {
         Map<String, List<String>> result = new HashMap<>();
         result.put("location", farmRepository.getLocations());
         result.put("sensorType", farmRepository.getSensorTypes());
