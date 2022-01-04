@@ -5,7 +5,8 @@
     },
     "extends": [
         "eslint:recommended",
-        "plugin:react/recommended"
+        "plugin:react/recommended",
+        "plugin:testing-library/react"
     ],
     "parserOptions": {
         "sourceType": "module",
@@ -15,8 +16,11 @@
         "ecmaVersion": 12
     },
     "plugins": [
-        "react"
-        
+        "react",
+        "testing-library",
+        "jest-dom",
+        "jest"
+         
     ],
     "rules": {
         "indent": [
@@ -34,6 +38,11 @@
         "semi": [
             "error",
             "always"
-        ]
+        ],
+        "testing-library/await-async-query": "error",
+        "testing-library/no-await-sync-query": "error",
+        "testing-library/no-debugging-utils": "warn",
+        "testing-library/no-dom-import": "off"
+       
     }
 }

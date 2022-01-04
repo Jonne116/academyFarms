@@ -6,7 +6,7 @@ target/
 **/.m2/
 .env
 **/src/main/javascript/node_modules/
-**/src/main/javascript/build/
+**/src/main/javascript/build
 
 
 ### STS ###
@@ -24,15 +24,3 @@ target/
 *.iml
 *.ipr
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-
-### VS Code ###
-.vscode/
