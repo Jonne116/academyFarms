@@ -2,7 +2,6 @@ package dev.academy.academyFarms.repository;
 
 import dev.academy.academyFarms.model.Farm;
 import org.jetbrains.annotations.NotNull;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;

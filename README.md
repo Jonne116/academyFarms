@@ -1,7 +1,8 @@
 # academyFarms
 
 ### About project
-This is Solita dev academy 2022 exercise
+Solita dev academy 2022 exercise solution <br>
+Pre-assignment can be found <a href="https://github.com/solita/dev-academy-2022-exercise">here</a>
 
 ---
 ### Build with

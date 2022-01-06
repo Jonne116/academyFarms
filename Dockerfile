@@ -2,7 +2,8 @@ FROM node as frontend
 WORKDIR /frontend
 COPY /src/main/javascript .
 RUN npm ci
-RUN npm run-script build
+RUN npm run test
+RUN npm run build
 
 FROM maven:3.8.2-jdk-11
 WORKDIR /farms-app

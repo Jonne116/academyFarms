@@ -3,7 +3,6 @@ package dev.academy.academyFarms.controller;
 import dev.academy.academyFarms.model.Farm;
 import dev.academy.academyFarms.service.FarmService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

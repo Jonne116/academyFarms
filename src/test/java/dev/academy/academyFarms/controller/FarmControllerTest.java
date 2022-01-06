@@ -4,7 +4,6 @@ import dev.academy.academyFarms.model.Farm;
 import dev.academy.academyFarms.service.FarmService;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.Matchers;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -17,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import java.time.Instant;
 import java.util.*;
 
-import static org.junit.jupiter.api.Assertions.*;
+
 @WebMvcTest(controllers = FarmController.class)
 class FarmControllerTest {
 

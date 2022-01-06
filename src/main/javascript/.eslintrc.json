@@ -18,8 +18,8 @@
     "plugins": [
         "react",
         "testing-library",
-        "jest-dom",
         "jest"
+
          
     ],
     "rules": {
